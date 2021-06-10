@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import moment from 'moment'
+import './HackerRank1.jsx'
 
 
 export default class App extends Component {
@@ -77,16 +78,17 @@ export default class App extends Component {
     return (
 
       <div >
-        <header className="header">
+        {/* <header className="header">
           <nav className="navbar navbar-expand-md navbar-dark bg-dark">
             <div>
               <a href="/" className="navbar-brand">React Practise</a>
             </div>
             <ul className="navbar-nav navbar-collapse justify-content-end">
-              <a className="nav-link" href="/">Home</a>
+              <li><a className="nav-link" href="/">Home</a></li>
+              <li><Link className="nav-link" to="./HackerRank1">Home</Link></li>
             </ul>
           </nav>
-        </header>
+        </header> */}
 
 
         {/* Hello */}
@@ -227,18 +229,21 @@ export default class App extends Component {
               }
             </tbody>
           </table>
+          <br/>
+          <br/>
+          <br/>
         </div>
 
 
-        <footer className="footer">
+        {/* <footer className="footer">
           <div className="container text-center">
             <span className="text-muted">All rights</span>
           </div>
-        </footer>
+        </footer> */}
 
       </div>
 
 
     )
   }
-}
+} 

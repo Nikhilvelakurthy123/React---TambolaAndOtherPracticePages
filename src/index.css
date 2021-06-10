@@ -16,7 +16,7 @@ code {
 }
 
 .footer {
-  position:static;
+  position:fixed;
   left:0px;
   bottom:0px;
   height:40px;
