@@ -15,10 +15,19 @@ class HeaderComponent extends Component {
                             <li><a className="nav-link" href="/">Home</a></li>
                             <li ><Link className="nav-link" to="/HackerRank1">HackerRank1</Link></li>
                             <li ><Link className="nav-link" to="/TimmerComponent">TimmerComponent</Link></li>
-                            <li><Link className="nav-link" to="/SpeedTestComponent">SpeedTestComponent</Link></li>
+                            {/* <li><Link className="nav-link" to="/SpeedTestComponent">SpeedTestComponent</Link></li> */}
+                            <li><Link className="nav-link" to="/TambolaComponent">TambolaComponent</Link></li>
                         </ul>
                     </nav>
-                </header> 
+                    {/* <nav>
+                        <div class="col-md-2 fixed pl-0 py-2 bg-light left">
+                            <ul class="nav flex-md-column flex-nowrap justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link text-truncate" href="#">Top on mobile</a>
+                                </li>
+                            </ul></div>
+                    </nav> */}
+                </header>
             </div>
         )
     }

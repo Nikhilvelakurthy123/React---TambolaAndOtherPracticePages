@@ -6,14 +6,14 @@ export default class TimmerComponent extends Component {
         super(props)
         this.state = {
             time: moment().format('hh:mm:ss a'),
-            minutes: Number(1),
-            seconds: Number(1)
+            minutes: Number(0),
+            seconds: Number(59)
         }
     }
     componentDidMount() {
         this.interval = setInterval(() => {
             
-            if (this.state.minutes >= 0 && this.state.seconds > 0) {
+            if (this.state.minutes >= 0 && this.state.seconds >= 1) {
                 this.setState({ time: moment().format('hh:mm:ss a') })
                 let a = this.state.seconds
                 if (--a === 0) {
@@ -26,8 +26,8 @@ export default class TimmerComponent extends Component {
                         this.setState({ seconds: a })
                 }
             }
-            else{
-                this.setState({ minutes: "00", seconds: "00" })
+            else {
+                this.setState({ minutes: Number(0), seconds: Number(0) })
                 clearInterval(this)
             }
         }, 1000)

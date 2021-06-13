@@ -63,10 +63,14 @@ export default class App extends Component {
   userDefined(){
       if(this.state.country1 !== "" ){
         this.state.cricket
-        .filter(response => (response['team-1'].toLowerCase() === this.state.country.toLowerCase() ) || response['team-2'].toLowerCase() === this.state.country.toLowerCase())
-        .map(( (response) =>
-            this.setState({ selectedFixtures : response })
-        ))
+        // .filter(response => (response['team-1'].toLowerCase() === this.state.country.toLowerCase() ) || response['team-2'].toLowerCase() === this.state.country.toLowerCase())
+        .filter(response => (response['team-1'].toLowerCase() === this.state.country1.toLowerCase() ) || response['team-2'].toLowerCase() === this.state.country1.toLowerCase())
+        .filter(response => JSON.stringify(response.dateTimeGMT.split("T")[0]).slice(1, 11) === this.state.date1)
+        .map(( (response) =>{
+            console.log(response)
+            this.setState({ selectedFixtures : response.data })
+            return response
+          }))
       }
 
       this.setState({ flagFixtures : true })
@@ -143,9 +147,9 @@ export default class App extends Component {
         <hr />
         <div className="container rounded-3">
           <div className="form-group pmd-textfield pmd-textfield-floating-label">
-            <label className="label label-primary">Enter the Country Name to get the Upcoming Fixtures</label>
+            <label className="label label-primary">Enter the <strong>Country Name</strong> to get the Upcoming Fixtures</label>
             <input type="text" value={this.state.country} name="country" onChange={this.handleChange} onBlur={() => this.setState({ display: true })} autoComplete="off" className="form-control" />
-            <input type="date" value={this.state.date} name="date" onChange={this.handleChange} onBlur={() => this.setState({ datedisplay: true })} autoComplete="off" className="form-control" />
+            {/* <input type="date" value={this.state.date} name="date" onChange={this.handleChange} onBlur={() => this.setState({ datedisplay: true })} autoComplete="off" className="form-control" /> */}
 
             {/* <div id="date-picker-example" className="md-form md-outline input-with-post-icon datepicker">
               <input placeholder="Select date" type="text" id="example" className="form-control" />
@@ -171,7 +175,7 @@ export default class App extends Component {
                 //var i = 0
                 this.state.cricket
                   .filter(response => (response['team-1'].toLowerCase() === this.state.country.toLowerCase() ) || response['team-2'].toLowerCase() === this.state.country.toLowerCase())
-                  .filter(response => JSON.stringify(response.dateTimeGMT.split("T")[0]).slice(1, 11) === this.state.date)
+                  // .filter(response => JSON.stringify(response.dateTimeGMT.split("T")[0]).slice(1, 11) === this.state.date)
                   .map(((response) =>
                     <tr key={response.unique_id}>
                       <td>{JSON.stringify(response.dateTimeGMT.split("T")[0]).slice(1, 11).split("-").reverse().join("-")}</td>
@@ -190,9 +194,9 @@ export default class App extends Component {
         </div>
 
 
-        <div className="container rounded-3">
+        <div className="container rounded-4">
           <div className="form-group pmd-textfield pmd-textfield-floating-label">
-            <label className="label label-primary">Enter the Country Name to get the Upcoming Fixtures</label>
+            <label className="label label-primary">Enter the <strong>Country Name and Date</strong> to get the Upcoming Fixtures</label>
             
             <input type="text" value={this.state.country1} name="country1" onChange={this.handleChange}  autoComplete="off" className="form-control" />
             <input type="date" value={this.state.date1} name="date1" onChange={this.handleChange}  autoComplete="off" className="form-control" />
@@ -214,7 +218,10 @@ export default class App extends Component {
             <tbody>
 
               {this.state.flagFixtures &&
-                this.state.selectedFixtures.map(response => (
+                this.state.cricket
+                .filter(response => (response['team-1'].toLowerCase() === this.state.country1.toLowerCase() ) || response['team-2'].toLowerCase() === this.state.country1.toLowerCase())
+                .filter(response => JSON.stringify(response.dateTimeGMT.split("T")[0]).slice(1, 11) === this.state.date1)
+                .map(((response) =>
                     <tr key={response.unique_id}>
                       <td>{JSON.stringify(response.dateTimeGMT.split("T")[0]).slice(1, 11).split("-").reverse().join("-")}</td>
                       <td className="table-primary">{response['team-1']}</td>
@@ -225,7 +232,7 @@ export default class App extends Component {
                       <td>{JSON.stringify(response['matchStarted'])}</td>
                     </tr>
 
-                  ))
+                ))
               }
             </tbody>
           </table>
@@ -242,8 +249,6 @@ export default class App extends Component {
         </footer> */}
 
       </div>
-
-
     )
   }
 } 
