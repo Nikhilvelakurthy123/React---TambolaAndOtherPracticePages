@@ -4,7 +4,7 @@ import moment from 'moment'
 import './HackerRank1.jsx'
 
 
-export default class App extends Component {
+export default class App extends Component { 
 
   constructor(props) {
     super(props)
