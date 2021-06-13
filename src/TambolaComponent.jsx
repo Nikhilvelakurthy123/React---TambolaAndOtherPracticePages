@@ -23,7 +23,7 @@ class TambolaComponent extends Component {
         console.log("Numbers = ", a)
         let pos = []
         for (let i = 0; pos.length < 15; i++) {
-            let value = Math.floor(Math.random() * (27 + 1))
+            let value = Math.floor(Math.random() * (26 + 1))
             //console.log(value)
             if (!pos.includes(value + 1))
                 pos.push(value + 1)
